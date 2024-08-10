@@ -1,0 +1,92 @@
+.job-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  margin: 10px;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.company-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.time-ago {
+  background-color: #cce5ff;
+  color: #007bff;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 12px;
+}
+
+.job-title {
+  margin-top: 10px;
+}
+
+.job-title h3 {
+  font-size: 18px;
+  color: #333;
+}
+
+.job-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: #888;
+  font-size: 14px;
+}
+
+.job-experience,
+.job-type,
+.job-salary {
+  display: flex;
+  align-items: center;
+}
+
+.job-description {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.job-description ul {
+  padding-left: 18px;
+  list-style-type: disc;
+}
+
+.read-more {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.apply-button {
+  width: 100%;
+  margin-top: 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.apply-button:hover {
+  background-color: #0056b3;
+}

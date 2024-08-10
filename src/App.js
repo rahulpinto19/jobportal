@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Navbar from "./components/Navbar";
+import Jobcard from "./components/jobcard/Jobcard";
+import "./App.css";
+import axios from "axios";
+import Filter from "./components/Filter";
 
-function App() {
+const App = () => {
+  const [jobs, setJobs] = useState([]);
+  const [credentials, setCredentials] = useState({
+    salary: 150000,
+    location: "",
+    jobType: "",
+    title: "",
+  });
+  const fetchFilteredData = async () => {
+    console.log("In fetching function");
+
+    try {
+      const response = await axios.get("http://localhost:3001/fetchjobs", {
+        params: { credentials }, // Parameters sent in the URL
+      });
+      setJobs(Array.from(response.data));
+
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  useEffect(() => {
+    fetchFilteredData();
+    console.log("useEffect is working");
+  }, [credentials]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <Navbar />
+
+      <Filter
+        setjobs={setJobs}
+        credentials={credentials}
+        setCredentials={setCredentials}
+      />
+
+      <div className="job-card-container">
+        {jobs.length === 0 ? <h1>No jobs to show</h1> : (
+         jobs.map((job, index) => (
+          <Jobcard key={index} job={job} />
+        ))
+          
+          
+          )}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
