@@ -130,7 +130,7 @@ const JobModal = ({ isOpen, onClose }) => {
       age: "21",
     };
     try {
-      const response = await axios.post("http://localhost:3001/upload", {
+      const response = await axios.post("https://jobportal-backend-orpin.vercel.app/upload", {
         jobData,
       });
       if (response.data.message === "job saved in the database") {
