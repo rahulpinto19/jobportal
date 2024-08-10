@@ -17,7 +17,7 @@ const App = () => {
     console.log("In fetching function");
 
     try {
-      const response = await axios.get("http://localhost:3001/fetchjobs", {
+      const response = await axios.get("https://jobportal-backend-orpin.vercel.app/fetchjobs", {
         params: { credentials }, // Parameters sent in the URL
       });
       setJobs(Array.from(response.data));
