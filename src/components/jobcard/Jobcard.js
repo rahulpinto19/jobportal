@@ -41,7 +41,7 @@ const JobCard = ({ job }) => {
     title: jobTitle,
     experience: "1-3 yr Exp",
     type: jobType,
-    salary: salary + " LPA",
+    salary: salary ,
     description: bulletPoints, // Store bullet points array
   };
 
