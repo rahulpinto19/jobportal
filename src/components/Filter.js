@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
+import searchIcon from "../Assets/search.png"; // Importing search icon
+import locationIcon from "../Assets/location.png"; // Importing location icon
+import jobtype from "../Assets/jobtype.png";
 import TwoPointerSlider from "./TwoPointerSlider";
-import {
-  faSearch,
-  faMapMarkerAlt,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
 
 const Filter = ({ setjobs, credentials, setCredentials }) => {
   // Function to handle input changes
@@ -21,7 +17,8 @@ const Filter = ({ setjobs, credentials, setCredentials }) => {
   return (
     <div style={styles.filterContainer}>
       <div style={styles.inputGroup}>
-        <FontAwesomeIcon icon={faSearch} style={styles.icon} />
+        <img src={searchIcon} alt="Search" style={styles.icon} />{" "}
+        {/* Using PNG image */}
         <input
           type="text"
           name="title"
@@ -33,7 +30,8 @@ const Filter = ({ setjobs, credentials, setCredentials }) => {
       </div>
       <div style={styles.separator}></div>
       <div style={styles.inputGroup}>
-        <FontAwesomeIcon icon={faMapMarkerAlt} style={styles.icon} />
+        <img src={locationIcon} alt="Location" style={styles.icon} />{" "}
+        {/* Using PNG image */}
         <select
           name="location"
           value={credentials.location}
@@ -51,7 +49,8 @@ const Filter = ({ setjobs, credentials, setCredentials }) => {
       </div>
       <div style={styles.separator}></div>
       <div style={styles.inputGroup}>
-        <FontAwesomeIcon icon={faUser} style={styles.icon} />
+        <img src={jobtype} alt="Job Type" style={styles.icon} />{" "}
+        {/* Using PNG image */}
         <select
           name="jobType"
           value={credentials.jobType}
@@ -64,13 +63,21 @@ const Filter = ({ setjobs, credentials, setCredentials }) => {
           <option value="Contract">Contract</option>
         </select>
       </div>
+      <div style={styles.separator}></div>
       <div style={styles.salaryContainer}>
         <TwoPointerSlider
-          salary={credentials.salary}
-          setSalary={(newSalary) =>
+          minsalary={credentials.minsalary}
+          setminsalary={(newminsalary) =>
             setCredentials((prevState) => ({
               ...prevState,
-              salary: newSalary,
+              minsalary: newminsalary,
+            }))
+          }
+          maxsalary={credentials.maxsalary}
+          setmaxsalary={(newmaxsalary) =>
+            setCredentials((prevState) => ({
+              ...prevState,
+              maxsalary: newmaxsalary,
             }))
           }
         />
@@ -82,35 +89,50 @@ const Filter = ({ setjobs, credentials, setCredentials }) => {
 const styles = {
   filterContainer: {
     display: "flex",
+    flexWrap: "wrap", // Allows items to wrap to the next line if needed
     alignItems: "center",
     gap: "10px",
+    padding: "15px",
+    borderRadius: "10px", // Rounded corners
+    backgroundColor: "#fff", // Background color
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.08)", // Lighter shadow for the entire component
+    width: "100%", // Ensure it covers the full width of its container
+    maxWidth: "1200px", // Optional: set a max width if needed
+    margin: "0 auto", // Center the component if it has a max-width
+    marginBottom: "20px", // Add margin at the bottom
   },
   inputGroup: {
     display: "flex",
     alignItems: "center",
+    flex: "1 1 auto", // Allow the input groups to expand and fill available space
   },
   icon: {
     marginRight: "5px",
+    width: "16px", // Adjust size of the icon if needed
+    height: "16px",
   },
   searchInput: {
     border: "none",
     outline: "none",
     padding: "10px",
+    width: "100%", // Ensure input stretches to full width of its container
   },
   select: {
     border: "none",
     outline: "none",
     padding: "10px",
+    width: "100%", // Ensure select box stretches to full width of its container
   },
   separator: {
-    width: "2px",
-    height: "40px",
-    backgroundColor: "#000",
+    width: "1px",
+    height: "30px",
+    backgroundColor: "#ddd", // Light color for the separator
   },
   salaryContainer: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    flex: "1 1 auto", // Allow the salary container to expand and fill available space
   },
 };
 

@@ -3,9 +3,21 @@ import "./Jobcard.css";
 import swiggy from "../../Assets/swiggy.png";
 import amazon from "../../Assets/amazon.png";
 import tesla from "../../Assets/tesla.png";
+import exp from "../../Assets/exp.png";
+import onsite from "../../Assets/onsite.png";
+import sal from "../../Assets/sal.png";
 
 const JobCard = ({ job }) => {
-  const { companyName, jobDescription, jobTitle, jobType, location, salary, _id, createdAt } = job;
+  const {
+    companyName,
+    jobDescription,
+    jobTitle,
+    jobType,
+    location,
+    salary,
+    _id,
+    createdAt,
+  } = job;
 
   // Function to calculate the time difference between now and the createdAt time
   const timeSinceCreation = (date) => {
@@ -30,19 +42,20 @@ const JobCard = ({ job }) => {
   // Calculate how long ago the job was posted
   const timeAgo = timeSinceCreation(createdAt);
 
-  // Split the job description into bullet points
-  const bulletPoints = jobDescription.split(". ").filter((point) => point.trim() !== "");
+  // Define job details
   const stringArray = ["swiggy", "amazon", "tesla"];
   const rand = parseInt(_id.slice(-1), 16);
 
-  // Randomly select a logo
   const j = {
     logo: stringArray[rand % stringArray.length],
     title: jobTitle,
     experience: "1-3 yr Exp",
-    type: jobType,
-    salary: salary + " LPA",
-    description: bulletPoints, // Store bullet points array
+    type: "Onsite",
+    salary: "12LPA",
+    desc1:
+      "A user-friendly interface lets you browse stunning photos and videos",
+    desc2:
+      "Filter destinations based on interests and travel style, and create personalized recommendations",
   };
 
   const Logo = {
@@ -64,36 +77,37 @@ const JobCard = ({ job }) => {
     setIsExpanded(!isExpanded);
   };
 
-  // Truncate description to 30 words
-  const truncatedDescription = j.description.slice(0, 30).join(". ") + (j.description.length > 30 ? "..." : "");
-
   return (
     <div className="job-card">
       <div className="job-header">
-        <img src={Logo[j.logo]} alt="company logo" className="company-logo" />
+        <div className="log-surround">
+          <img
+            src={Logo[j.logo] || Logo.unknown}
+            alt="company logo"
+            className="company-logo"
+          />
+        </div>
         <span className="time-ago">{timeAgo}</span>
       </div>
       <div className="job-title">
         <h3>{j.title}</h3>
       </div>
       <div className="job-details">
-        <span className="job-experience">{j.experience}</span>
-        <span className="job-type">{j.type}</span>
-        <span className="job-salary">{j.salary}</span>
+        <div className="job-detail-item">
+          <img src={exp} alt="experience" className="icon" /> {j.experience}
+        </div>
+        <div className="job-detail-item">
+          <img src={onsite} alt="job type" className="icon" /> {j.type}
+        </div>
+        <div className="job-detail-item">
+          <img src={sal} alt="salary" className="icon" /> {j.salary}
+        </div>
       </div>
       <div className="job-description">
         <ul>
-          {isExpanded ? (
-            j.description.map((point, index) => <li key={index}>{point}</li>)
-          ) : (
-            truncatedDescription
-          )}
+          <li>{j.desc1}</li>
+          <li>{j.desc2}</li>
         </ul>
-        {j.description.length > 30 && (
-          <button className="read-more" onClick={handleToggleDescription}>
-            {isExpanded ? "Read Less" : "Read More"}
-          </button>
-        )}
       </div>
       <button className="apply-button" onClick={handleApplyClick}>
         Apply Now

@@ -8,16 +8,17 @@ import Filter from "./components/Filter";
 const App = () => {
   const [jobs, setJobs] = useState([]);
   const [credentials, setCredentials] = useState({
-    salary: 150000,
+    minsalary: 0,
+    maxsalary:100000,
     location: "",
     jobType: "",
     title: "",
   });
   const fetchFilteredData = async () => {
     console.log("In fetching function");
-
+    console.log(credentials);
     try {
-      const response = await axios.get("http://localhost:3001/fetchjobs", {
+      const response = await axios.get("http://jobportal-backend-orpin.vercel.app/fetchjobs", {
         params: { credentials }, // Parameters sent in the URL
       });
       setJobs(Array.from(response.data));
@@ -42,13 +43,11 @@ const App = () => {
       />
 
       <div className="job-card-container">
-        {jobs.length === 0 ? <h1>No jobs to show</h1> : (
-         jobs.map((job, index) => (
-          <Jobcard key={index} job={job} />
-        ))
-          
-          
-          )}
+        {jobs.length === 0 ? (
+          <h1>No jobs to show</h1>
+        ) : (
+          jobs.map((job, index) => <Jobcard key={index} job={job} />)
+        )}
       </div>
     </div>
   );

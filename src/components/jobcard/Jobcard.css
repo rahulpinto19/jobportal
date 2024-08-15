@@ -2,11 +2,11 @@
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  padding: 16px;
-  width: 250px;
+  padding: 15px; /* Increase padding for better content spacing */
+  width: 100%; /* Ensure it scales with its container */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
-  margin: 10px;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .job-header {
@@ -15,17 +15,34 @@
   align-items: center;
 }
 
+.log-surround {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 80px;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: #f8f9fbf6;
+}
+
 .company-logo {
-  width: 40px;
-  height: 40px;
+  width: 60px; /* Adjust width for better fit */
+  height: 60px;
   border-radius: 50%;
+  object-fit: cover;
+  background-color: #f8f9fa;
 }
 
 .time-ago {
   background-color: #cce5ff;
-  color: #007bff;
+  color: #000000;
+  margin-top: -50px;
   padding: 4px 8px;
-  border-radius: 16px;
+  border-radius: 4px; /* Ensure the border-radius is set */
   font-size: 12px;
 }
 
@@ -34,28 +51,34 @@
 }
 
 .job-title h3 {
-  font-size: 18px;
+  font-size: 16px; /* Adjust font size for better fit */
   color: #333;
 }
 
 .job-details {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   margin-top: 10px;
   color: #888;
-  font-size: 14px;
+  font-size: 12px; /* Reduce font size to fit the card */
 }
 
-.job-experience,
-.job-type,
-.job-salary {
+.job-detail-item {
   display: flex;
   align-items: center;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.icon {
+  width: 14px; /* Reduce icon size */
+  height: 14px;
+  margin-right: 5px;
 }
 
 .job-description {
   margin-top: 10px;
-  font-size: 14px;
+  font-size: 12px; /* Reduce font size to fit the card */
   color: #555;
 }
 
@@ -70,7 +93,7 @@
   color: #007bff;
   cursor: pointer;
   padding: 0;
-  font-size: 14px;
+  font-size: 12px;
   margin-top: 5px;
 }
 
@@ -83,7 +106,7 @@
   border-radius: 8px;
   padding: 10px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px; /* Slightly larger font size */
   transition: background-color 0.3s ease;
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import JobModal from "./JobModal";
+import logo from '../Assets/cmwlogo.svg';
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,6 +17,9 @@ const Navbar = () => {
     <div>
       <nav style={styles.navbar}>
         <ul style={styles.navbarList}>
+          <li style={styles.navbarItemLogo}>
+            <img src={logo} alt="logo" style={styles.logo} />
+          </li>
           <li style={styles.navbarItem}>
             <a href="/" style={styles.navbarLink}>
               Home
@@ -76,10 +80,18 @@ const styles = {
     gap: "15px",
     margin: 0,
     padding: 0,
+    alignItems: "center",
   },
   navbarItem: {
     fontSize: "14px",
     fontWeight: "500",
+  },
+  navbarItemLogo: {
+    marginRight: "15px",
+  },
+  logo: {
+    height: "40px",
+    width: "auto",
   },
   navbarLink: {
     textDecoration: "none",
@@ -89,7 +101,7 @@ const styles = {
     transition: "background 0.3s",
   },
   createJobButton: {
-    background: "linear-gradient(145deg, #5513ab, #3d0c78)",
+    background: "#760dc7",
     color: "#fff",
     border: "none",
     borderRadius: "30px",
@@ -98,6 +110,7 @@ const styles = {
     boxShadow:
       "4px 4px 8px rgba(0, 0, 0, 0.2), inset 2px 2px 5px rgba(255, 255, 255, 0.3)",
     transition: "all 0.3s",
+    border: "2px solid #9a57dc",  // Light shade border
   },
 };
 

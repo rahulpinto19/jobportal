@@ -1,0 +1,27 @@
+/* Styles for the slider component */
+.slider {
+    height: 4px; /* Thinner line */
+    width: 100%;
+    background-color: #000; /* Black color for the line */
+    border-radius: 2px; /* Adjusted for a thinner line */
+    margin-top: 10px;
+    position: relative;
+}
+
+/* Styles for the slider thumb */
+.slider .thumb {
+    height: 16px; /* Slightly smaller thumb */
+    width: 16px;
+    border-radius: 50%;
+    background-color: #000; /* Black color for the thumb */
+    cursor: grab;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Center the thumb vertically */
+}
+
+/* Styles for the slider active state */
+.slider .thumb.active {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
