@@ -9,7 +9,7 @@ const App = () => {
   const [jobs, setJobs] = useState([]);
   const [credentials, setCredentials] = useState({
     minsalary: 0,
-    maxsalary:100000,
+    maxsalary: 100000,
     location: "",
     jobType: "",
     title: "",
@@ -18,9 +18,12 @@ const App = () => {
     console.log("In fetching function");
     console.log(credentials);
     try {
-      const response = await axios.get("http://jobportal-backend-orpin.vercel.app/fetchjobs", {
-        params: { credentials }, // Parameters sent in the URL
-      });
+      const response = await axios.get(
+        "https://jobportal-backend-orpin.vercel.app/fetchjobs",
+        {
+          params: { credentials }, // Parameters sent in the URL
+        }
+      );
       setJobs(Array.from(response.data));
 
       console.log(response.data);
