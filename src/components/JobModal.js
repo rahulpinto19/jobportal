@@ -164,6 +164,7 @@ const JobModal = ({ isOpen, onClose }) => {
       const response = await axios.post("https://jobportal-backend-orpin.vercel.app/upload", {
         jobData,
       });
+      console.log(response)
       if (response.data.message === "job saved in the database") {
         onClose();
         alert("Job uploaded successfully");
